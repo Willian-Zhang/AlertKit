@@ -165,13 +165,11 @@ public class AlertAppleMusic16View: UIView, AlertViewProtocol {
         })
     }
     
-    @objc open func dismiss(completion: (()->Void)? = nil) {
-        if let completion = completion {
-            self.dismiss(customCompletion: {
-                completion?()
-                self.completion?()
-            })
-        }
+    @objc open func dismiss(completion: (()->Void)?  = nil) {
+        self.dismiss(customCompletion: {
+            completion?()
+            self.completion?()
+        })
     }
     
     func dismiss(customCompletion: (()->Void)? = nil) {
