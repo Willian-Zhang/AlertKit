@@ -136,7 +136,7 @@ public class AlertAppleMusic16View: UIView, AlertViewProtocol {
         transform = transform.scaledBy(x: self.presentDismissScale, y: self.presentDismissScale)
         
         if dismissByTap {
-            let tapGesterRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismiss(completion:)))
+            let tapGesterRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismiss as () -> Void))
             addGestureRecognizer(tapGesterRecognizer)
         }
         
@@ -162,6 +162,12 @@ public class AlertAppleMusic16View: UIView, AlertViewProtocol {
                     }
                 }
             }
+        })
+    }
+    
+    @objc open func dismiss() {
+        self.dismiss(customCompletion: {
+            self.completion?()
         })
     }
     
